@@ -9,7 +9,7 @@ export class MensagemComponent implements OnInit {
 
 
   // para podermos usar o atributo mensagem, e assim atribuir valor a ele como desejar
-  @Input() mensagem: string = '';
+  @Input()mensagem: string = '';
 
   constructor() { }
 

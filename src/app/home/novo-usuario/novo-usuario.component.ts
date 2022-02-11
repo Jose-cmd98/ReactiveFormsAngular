@@ -1,6 +1,6 @@
 import { NovoUsuarioService } from './../novo-usuario.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-novo-usuario',
@@ -9,14 +9,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class NovoUsuarioComponent implements OnInit {
 
+
+
   constructor(private service: NovoUsuarioService, private fb: FormBuilder) { }
 
   novoUsuarioForm!: FormGroup;
 
   ngOnInit(): void {
     this.novoUsuarioForm = this.fb.group({
-      email: [''],
-      fullName: [''],
+      email: ['',[Validators.required, Validators.email]],
+      fullName: ['',[ Validators.required, Validators.minLength(5)]],
       userName: [''],
       password: ['']
     })

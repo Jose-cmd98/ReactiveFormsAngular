@@ -1,20 +1,42 @@
 <h2 class="text-center">Cadastro de Novo Usuário</h2>
 
-<form class=" form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
+<form class="form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
   <div class="form-group">
-    <input type="text" placeholder="Email" class="form-control">
+    <input
+      type="text"
+      placeholder="Email"
+      class="form-control"
+      formControlName="email"
+    />
+    <app-mensagem
+      *ngIf="
+    novoUsuarioForm.get('email')?.errors?.['required'] &&
+    novoUsuarioForm.get('email')?.['touched']
+    "
+      mensagem="Email Obrigatório"
+    ></app-mensagem>
+    <app-mensagem
+    *ngIf=" novoUsuarioForm.get('email')?.errors?.['email'] "
+
+    mensagem="Email incorreto"
+    ></app-mensagem>
   </div>
   <div class="form-group">
-    <input type="text" placeholder="Nome Completo" class="form-control">
+    <input type="text" formControlName="fullName" placeholder="Nome Completo" class="form-control" />
+    <app-mensagem mensagem="Usuario Invalido"
+    *ngIf="novoUsuarioForm.get('fullName')?.errors?.['required']
+    && novoUsuarioForm.get('email')?.['touched']
+    "
+    ></app-mensagem>
   </div>
   <div class="form-group">
-    <input type="text" placeholder="Novo Usuário" class="form-control">
+    <input type="text" placeholder="Novo Usuário" class="form-control" />
   </div>
   <div class="form-group">
-    <input type="password" placeholder="Nova Senha" class="form-control">
+    <input type="password" placeholder="Nova Senha" class="form-control" />
   </div>
-  <button class="btn btn-primary btn-block" type="submit" >Cadastrar </button>
+  <button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
 </form>
-<p>Já é um usuário? <a [routerLink]="['/home']">Faça o Login</a> </p>
+<p>Já é um usuário? <a [routerLink]="['/home']">Faça o Login</a></p>
 
 <!-- fazer validacao -->
