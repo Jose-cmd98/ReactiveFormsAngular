@@ -11,6 +11,6 @@ export class NovoUsuarioService {
 
 
   cadastrarNovoUsuario(novoUsuario: NovoUsuario){
-    return this.http.post('http://localhost:3000/user/singup', novoUsuario);
+    return this.http.post('http://localhost:3000/user/signup', novoUsuario);
   }
 }
